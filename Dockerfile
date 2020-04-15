@@ -1,9 +1,8 @@
-FROM balenalib/armv7hf-debian-node:10.19-sid-build as build
+FROM balenalib/armv7hf-debian-node:10.19-sid-run
 MAINTAINER Stefan Kastenholz <stefan.kastenholz@gmail.com>
 
-RUN install_packages git
-RUN git clone https://github.com/ChriD/node-raumserver.git && cd node-raumserver/ && npm install
+RUN npm install node-raumserver@0.1.9
 
 EXPOSE 8080
 
-CMD cd node-raumserver/ && node test.js
+CMD cd node_modules/node-raumserver && npm start
