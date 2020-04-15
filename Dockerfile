@@ -1,7 +1,7 @@
-FROM resin/raspberrypi-node
+FROM balenalib/armv7hf-debian-node:10.19-sid-build as build
 MAINTAINER Stefan Kastenholz <stefan.kastenholz@gmail.com>
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN install_packages git
 RUN git clone https://github.com/ChriD/node-raumserver.git && cd node-raumserver/ && npm install
 
 EXPOSE 8080
